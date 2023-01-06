@@ -35,7 +35,7 @@ With your property created, you now need to set up Data Stream to track your blo
 
 It should look like this:
 
-![google-analytics-data-stream](/posts/AA2CC123-FF90-45AC-88F4-CF56B2791224_1_105_c.jpeg){: width="1086" height="542"}
+![google-analytics-data-stream](posts_media/haha.jpeg){: width="1086" height="542"}
 
 Now, click on the new data stream and grab the **Measurement ID**. It should look something like `G-V6XXXXXXXX`. Copy this to your `_config.yml`{: .filepath} file:
 
