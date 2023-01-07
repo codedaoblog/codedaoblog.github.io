@@ -1,10 +1,10 @@
 ---
-title: Implementing Gradient Descent in Python from Scratch
+title: Thuật toán Gradient Descent (GD) với Python
 author: hoanglinh
-date: 2019-08-08 14:10:00 +0800
-categories: [Machine Leanrning, Deep Learning]
+categories: [Machine Learning, Deep Learning]
 tags: [optimization algorithms]
-img_path: posts_media/20230107-posts
+math: true
+img_path: posts_media/2023-01-07-posts/
 ---
 
 ## Giới thiệu về thuật toán Gradient Descent (GD)
@@ -27,4 +27,4 @@ $$
 
 Trong đó, $\beta$ là bias cho model, $\theta$ là weight vector cho từng feature của input $X_i$
 
-![gradient-descent]("gradient-descent.png")
+![gradient-descent](gradient-descent.png)
