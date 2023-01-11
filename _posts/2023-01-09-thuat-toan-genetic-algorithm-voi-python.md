@@ -6,7 +6,7 @@ tags: [optimization algorithms]
 math: true
 img_path: posts_media/2023-01-09-posts/
 image:
-  path: ga-cover.jpg
+  path: ga-cover.jpeg
 ---
 
 Từ lâu, chúng ta thường được nghe rằng loài người được tiến hóa từ loài vượn cổ. Quan điểm này xuất phát từ thuyết tiến hóa của Charles Darwin. Song song với thuyết tiến hóa của Darwin - quan điểm chọn lọc tự nhiên thì còn 1 thuyết tiến hóa nữa của Jean-Baptiste Lamarck. Tuy nhiên trong bài viết này mình sẽ không đề cập tới lĩnh vực này mà mình muốn giới thiệu tới bạn đọc một thuật toán sử dụng chọn lọc tự nhiên để tìm ra lời giải tối ưu đối với các bài toán có không gian tìm kiếm rất lớn - **Genetic Algorithm (GA) - *Giải thuật Di Truyền*.**
