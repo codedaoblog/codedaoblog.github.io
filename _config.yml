@@ -21,10 +21,10 @@ timezone: Asia/Taipei
 
 title: Linh H. Truong                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Everything comes from an idea. Just do it and keep your motivation
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  Chia sẻ kiến thức về Machine learning và Deep learning trong sản xuất công nghiệp
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://codedaoblog.github.io'
@@ -32,8 +32,8 @@ url: 'https://codedaoblog.github.io'
 github:
   username: hoanglinh96nthu             # change to your github username
 
-twitter:
-  username: twitter_username            # change to your twitter username
+# twitter:
+#   username: twitter_username            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -80,7 +80,7 @@ theme_mode: light
 # e.g. 'https://cdn.com'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/assets/img/avatar.jpeg"
+avatar: "/assets/img/hero.png"
 
 # boolean type, the global switch for ToC in posts.
 toc: true
