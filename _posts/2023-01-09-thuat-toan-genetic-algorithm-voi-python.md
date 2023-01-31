@@ -1,5 +1,5 @@
 ---
-title: Giải thuật di truyền (Genetic Algorithm) với Python
+title: Giải thuật di truyền (Genetic Algorithm) với Python (Phần 1)
 author: hoanglinh
 categories: [Meta-heuristic Algorithm]
 tags: [optimization algorithms]
@@ -11,7 +11,7 @@ image:
 
 Từ lâu, chúng ta thường được nghe rằng loài người được tiến hóa từ loài vượn cổ. Quan điểm này xuất phát từ thuyết tiến hóa của Charles Darwin. Song song với thuyết tiến hóa của Darwin - quan điểm chọn lọc tự nhiên thì còn 1 thuyết tiến hóa nữa của Jean-Baptiste Lamarck. Tuy nhiên trong bài viết này mình sẽ không đề cập tới lĩnh vực này mà mình muốn giới thiệu tới bạn đọc một thuật toán sử dụng chọn lọc tự nhiên để tìm ra lời giải tối ưu đối với các bài toán có không gian tìm kiếm rất lớn - **Genetic Algorithm (GA) - *Giải thuật Di Truyền*.**
 
-## Ý tưởng từ sự tiến hóa
+# Ý tưởng từ sự tiến hóa
 
 Lấy ví dụ ngay là con người như chúng ta, giả thiết rằng vì đặc tính săn bắt và hái lượm, các bộ phận trên cơ thể tổ tiên chúng ta đã có sự thay đổi hay tiến hóa để phù hợp với sự phát triển hơn. Điều này thể hiện rõ ngay cả đối với thế hệ ba mẹ và con cái, thường con cái sẽ nhận được các gen tốt từ cả bố và mẹ và từ đó thế hệ sau sẽ càng tốt hơn so với thế hệ trước.
 
@@ -22,7 +22,7 @@ Nói theo một cách khác, quá trình tiến hóa gồm 4 thành phần chín
 3.  **Mutation - đột biến**: Như chúng ta đã biết thì mỗi cá thể con được sinh ra sẽ được kế thừa lại những đặc tính của cả cha và mẹ. Tuy nhiên, để đáp ứng được với sự thay đổi của môi trường hoặc thậm chí là tiến hóa, đột biến là quá trình cần thiết và đóng vai trò then chốt cho quá trình **Selection**
 4.  **Evolution - tiến hóa**: Những cá thể đột biến không phải luôn là những cá thể mạnh mẽ và có đủ khả năng sinh tồn, **Chọn lọc tự nhiên** sẽ chọn ra những cá thể đột biến nhưng có thể thích nghi với môi trường sống tốt hơn những cá thể khác trong quần thể. Sau một thời gian sinh sản, những gen đột biến sẽ chiếm ưu thế và chiếm đa số trong quần thể.
 
-## Lý thuyết thuật toán GA
+# Lý thuyết thuật toán GA
 
 Không giống như hầu hết các thuật toán tối ưu hóa, thuật toán di truyền không sử dụng đạo hàm để tìm cực tiểu (local minima). Một trong những ưu điểm quan trọng nhất của thuật toán GA là khả năng tìm ra điểm global minima mà không bị mắc kẹt trong local minima. Tính ngẫu nhiên (randomness) đóng một vai trò quan trọng trong cấu trúc của thuật toán di truyền và đó là lý do chính khiến thuật toán di truyền tiếp tục tìm kiếm không gian tìm kiếm.
 
@@ -38,7 +38,7 @@ Lấy ví dụ với bài toán tính tổng sao cho lớn nhất, mỗi solutio
 
 Nếu thuật toán chưa gặp phải điều kiện dừng như đã chạy đủ số lần lặp, hay fitness value không tốt hơn nữa, thuật toán di truyền sẽ tạo ra thế hệ tiếp theo. Hoạt động di truyền đầu tiên là **Chọn lọc**; trong hoạt động này, các cá thể chuyển sang thế hệ tiếp theo được chọn. Sau quá trình lựa chọn, hoạt động ghép nối bắt đầu. Hoạt động ghép đôi sẽ ghép đôi từng cá thể được chọn cho hoạt động **Mating operation**. **Mating operation** lấy các cá thể bố mẹ đã ghép đôi và tạo ra **thế hệ con (offsprings)**, chúng sẽ **thay thế** các cá thể không được chọn trong thao tác Chọn lọc, vì vậy thế hệ tiếp theo có cùng số lượng cá thể như thế hệ trước. Quá trình này được lặp lại cho đến khi các tiêu chí chấm dứt được đáp ứng.
 
-## Code GA from scratch with Python
+# Code GA from scratch with Python
 
 Trong bài viết này, chúng ta sẽ cùng code GA từ đầu bằng `Python` và thư viện `Numpy`. Mỗi hoạt động di truyền được đề cập ở trên sẽ được viết lại dưới dạng các function. Trước khi bắt đầu với mã thuật toán di truyền, chúng ta cần nhập một số thư viện dưới dạng:
 
@@ -47,7 +47,7 @@ import numpy as np
 import random	
 ```
 
-### Khởi tạo individual và population
+## Khởi tạo individual và population
 
 Thuật toán GA bắt đầu quá trình tối ưu hóa bằng cách tạo ra một tập hợp ban đầu các candidate solutions có gen được tạo ngẫu nhiên
 
@@ -65,7 +65,7 @@ def population(number_of_individuals, number_of_genes, upper_limit, lower_limit)
         for x in range(number_of_individuals)]
 ```
 
-### Tính toán fitness value
+## Tính toán fitness value
 
 Gọi 2 function này, population ban đầu có thể được tạo ra. Sau khi thuật toán di truyền tạo ra thế hệ đầu tiên, các fitness value của các individual được tính toán.
 
@@ -91,7 +91,7 @@ $$
 > Trong một số trường hợp khác yêu cầu tối ưu tất cả parameters cùng nhau, những bài toán đó thuộc về **multi-objectives optimization problem**, bạn đọc có thể tìm hiểu thêm tại bài viết này [Bài toán multi-objective optimization](https://developer.twitt)
 {: .prompt-tip }
 
-### Quá trình Selection
+## Quá trình Selection
 
 Quá trình selection lấy đầu vào là tất cả các individual và các giá trị fitness của chúng. Output là tập hợp các individuals được chọn cho quá trình update ở generation tiếp theo. Câu hỏi là làm sao để chọn? Thuật ngữ **“elitism”** hay gọi là **“tinh hoa”** được sử dụng như là phương pháp để chọn các individual có fitness value tốt nhất, từ đó ta đảm bảo được việc bỏ sót các solution tốt.
 
@@ -162,7 +162,7 @@ def individual_selection(generation, method='fittest-half'):
     return selected_individuals
 ```
 
-### Quá trình pairing and mating
+## Quá trình pairing and mating
 
 Tương tự như quá trình **selection**, quá trình pairing và mating cũng các chiến lược khác nhau. Trước tiên, chúng ta sẽ thảo luận về ba phương pháp pairing khác nhau.
 
@@ -243,7 +243,7 @@ def mating(parents, method='single-point'):
     return offsprings
 ```
 
-### Quá trình mutation tạo ra đột biến
+## Quá trình mutation tạo ra đột biến
 
 Đột biến ngẫu nhiên xảy ra ở các cá thể được chọn và con cái của chúng để cải thiện sự đa dạng của thế hệ tiếp theo. Nếu có tinh hoa trong thuật toán di truyền, cá thể tinh hoa không trải qua đột biến ngẫu nhiên nên chúng ta không mất solution tốt nhất. Chúng ta sẽ thảo luận về hai phương pháp đột biến khác nhau.
 
@@ -274,7 +274,7 @@ def mutation(individual, upper_limit, lower_limit, muatation_rate=2, method='Res
     return mutated_individual
 ```
 
-## Creating the next generation
+## Tạo ra các thế hệ tiếp theo
 
 Thế hệ tiếp theo được tạo ra bằng cách sử dụng các hoạt động di truyền mà chúng ta đã thảo luận. Elitsm có thể được đưa vào thuật toán di truyền trong quá trình tạo ra thế hệ tiếp theo. 
 
@@ -312,7 +312,15 @@ def next_generation(gen, upper_limit, lower_limit):
     return next_gen
 ```
 
+## Termination Criteria
 
+Sau khi một thế hệ được tạo, các tiêu chí kết thúc được sử dụng để xác định xem thuật toán di truyền có nên tạo một thế hệ khác hay không. Các tiêu chí kết thúc khác nhau có thể được sử dụng đồng thời và nếu thuật toán di truyền thỏa mãn một trong các tiêu chí thì thuật toán di truyền dừng lại. Chúng ta sẽ thảo luận về 4 tiêu chí:
+
+- **Đạt giá trị fitness tối đa** : Tiêu chí chấm dứt này kiểm tra xem best individual trong thế hệ hiện tại có đáp ứng các tiêu chí của chúng ta hay không. Sử dụng phương pháp này có thể thu được kết quả mong muốn. Như được thấy từ hình bên dưới, các giá trị có thể được xác định bao gồm một số cực tiểu cục bộ hoặc global minima.
+
+  ![local-vs-global](local-vs-absolute-extrema.png)
+
+- 
 
 ## References
 

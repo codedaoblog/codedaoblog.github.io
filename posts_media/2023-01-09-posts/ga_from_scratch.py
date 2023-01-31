@@ -154,7 +154,7 @@ def next_generation(gen, upper_limit, lower_limit):
     elit['individuals'] = gen['individuals'].pop(-1)
     elit['fitness'] = gen['fitness'].pop(-1)
     
-    selected = selection(gen)
+    selected = individual_selection(gen)
     parents = pairing(elit, selected)
     offsprings = [[[mating(parents[x]) for x in range(len(parents))][y][z] for z in range(2)] \
         for y in range(len(parents))]
