@@ -326,21 +326,21 @@ Sau khi một thế hệ được tạo, các tiêu chí kết thúc được s�
 
 - **Số lượng thể lực tương tự tối đa**: Do cá thể tốt nhất trong một thế hệ ưu tú chuyển sang thế hệ tiếp theo mà không bị đột biến. Cá nhân này cũng có thể là cá nhân tốt nhất trong thế hệ tiếp theo. Chúng ta có thể giới hạn số lượng để cùng một cá thể trở thành cá thể tốt nhất vì điều này có thể nói rằng thuật toán di truyền bị mắc kẹt trong một cực tiểu cục bộ. Hàm để kiểm tra xem giá trị phù hợp tối đa có thay đổi hay không có thể được viết là
 
-  ```python
-  def fitness_similarity_chech(max_fitness, number_of_similarity):
-      result = False
-      similarity = 0
-      for n in range(len(max_fitness)-1):
-          if max_fitness[n] == max_fitness[n+1]:
-              similarity += 1
-          else:
-              similarity = 0
-      if similarity == number_of_similarity-1:
-          result = True
-      return result
-  ```
+```python
+def fitness_similarity_chech(max_fitness, number_of_similarity):
+    result = False
+    similarity = 0
+    for n in range(len(max_fitness)-1):
+        if max_fitness[n] == max_fitness[n+1]:
+            similarity += 1
+        else:
+            similarity = 0
+    if similarity == number_of_similarity-1:
+        result = True
+    return result
+```
 
-  ## Running the Algorithm
+## Running the Algorithm
 
   
 
